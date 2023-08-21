@@ -1,0 +1,8 @@
+<h1>Liste des pokemons</h1>
+<input #inputNumber (keyup)="selectPokemon(inputNumber.value)" type="number" min="1" max="12">
+
+<div *ngFor="let pokemon of pokemonList">
+    <p>{{pokemon.name}}</p>
+</div>
+<p *ngIf="pokemonSelected ; else noPokemmonSelected">Le pokemon sélectionné est {{pokemonSelected.name}}</p>
+<ng-template #noPokemmonSelected><p>Aucun pokémon sélectionné ou renseignez un id entre 1 et 12.</p></ng-template>
