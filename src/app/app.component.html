@@ -1,8 +1,32 @@
-<h1>Liste des pokemons</h1>
-<input #inputNumber (keyup)="selectPokemon(inputNumber.value)" type="number" min="1" max="12">
+<h1 fxLayoutAlign="center">Liste des pokemons</h1>
 
-<div *ngFor="let pokemon of pokemonList">
-    <p>{{pokemon.name}}</p>
+<div fxLayout="column wrap">
+    <input #inputNumber (keyup.enter)="selectPokemon(inputNumber.value)" type="number" min="1" max="12">
+    <p *ngIf="pokemonSelected ; else noPokemmonSelected">Vous avez sélectionné le pokemon :  {{pokemonSelected.name}}</p>
+    <ng-template #noPokemmonSelected>
+        <p>Aucun pokémon n'a été trouvé (1 à 12).</p>
+    </ng-template>
 </div>
-<p *ngIf="pokemonSelected ; else noPokemmonSelected">Le pokemon sélectionné est {{pokemonSelected.name}}</p>
-<ng-template #noPokemmonSelected><p>Aucun pokémon sélectionné ou renseignez un id entre 1 et 12.</p></ng-template>
+
+<div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center">
+    <mat-card fxFlex="350px" class="pokemon-card" *ngFor="let pokemon of pokemonList">
+        <mat-card-header>
+            <mat-card-title-group>
+                <mat-card-title>{{pokemon.name | titlecase}}</mat-card-title>
+                <mat-card-subtitle>
+                    <mat-chip-listbox>
+                        <mat-chip-option *ngFor="let pokeType of pokemon.types">
+                            {{ pokeType | titlecase }}
+                        </mat-chip-option>
+                    </mat-chip-listbox>
+                </mat-card-subtitle>
+                <img mat-card-lg-image src="{{pokemon.picture}}">
+            </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Date : {{pokemon.created | date:'short'}}</p>
+            <p>HP : {{pokemon.hp}}</p>
+            <p>CP : {{pokemon.cp}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>
