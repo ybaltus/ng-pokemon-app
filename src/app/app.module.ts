@@ -6,10 +6,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatChipsModule} from "@angular/material/chips";
+import { BorderCardDirective } from './border-card.directive';
+import { PokemonTypeColorPipe } from './pokemon-type-color.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BorderCardDirective,
+    PokemonTypeColorPipe
   ],
   imports: [
     BrowserModule,

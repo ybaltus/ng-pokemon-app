@@ -9,22 +9,22 @@
 </div>
 
 <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center">
-    <mat-card fxFlex="350px" class="pokemon-card" *ngFor="let pokemon of pokemonList">
+    <mat-card fxFlex="350px" class="pokemon-card" *ngFor="let pokemon of pokemonList" pokemonBorderCard>
         <mat-card-header>
             <mat-card-title-group>
                 <mat-card-title>{{pokemon.name | titlecase}}</mat-card-title>
                 <mat-card-subtitle>
                     <mat-chip-listbox>
-                        <mat-chip-option *ngFor="let pokeType of pokemon.types">
+                        <mat-chip *ngFor="let pokeType of pokemon.types" [ngStyle]="{'background-color': pokeType|pokemonTypeColor}">
                             {{ pokeType | titlecase }}
-                        </mat-chip-option>
+                        </mat-chip>
                     </mat-chip-listbox>
                 </mat-card-subtitle>
                 <img mat-card-lg-image src="{{pokemon.picture}}">
             </mat-card-title-group>
         </mat-card-header>
         <mat-card-content>
-            <p>Date : {{pokemon.created | date:'short'}}</p>
+            <p>Date : {{pokemon.created | date:'d/m/Y'}}</p>
             <p>HP : {{pokemon.hp}}</p>
             <p>CP : {{pokemon.cp}}</p>
         </mat-card-content>
