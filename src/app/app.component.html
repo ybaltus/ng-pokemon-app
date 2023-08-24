@@ -1,32 +1,10 @@
-<h1 fxLayoutAlign="center">Liste des pokemons</h1>
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span routerLink="/pokemons">Pokédex</span>
+    <span class="example-spacer"></span>
+</mat-toolbar>
 
-<div fxLayout="column wrap">
-    <input #inputNumber (keyup.enter)="selectPokemon(inputNumber.value)" type="number" min="1" max="12">
-    <p *ngIf="pokemonSelected ; else noPokemmonSelected">Vous avez sélectionné le pokemon :  {{pokemonSelected.name}}</p>
-    <ng-template #noPokemmonSelected>
-        <p>Aucun pokémon n'a été trouvé (1 à 12).</p>
-    </ng-template>
-</div>
-
-<div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center">
-    <mat-card fxFlex="350px" class="pokemon-card" *ngFor="let pokemon of pokemonList" pokemonBorderCard>
-        <mat-card-header>
-            <mat-card-title-group>
-                <mat-card-title>{{pokemon.name | titlecase}}</mat-card-title>
-                <mat-card-subtitle>
-                    <mat-chip-listbox>
-                        <mat-chip *ngFor="let pokeType of pokemon.types" [ngStyle]="{'background-color': pokeType|pokemonTypeColor}">
-                            {{ pokeType | titlecase }}
-                        </mat-chip>
-                    </mat-chip-listbox>
-                </mat-card-subtitle>
-                <img mat-card-lg-image src="{{pokemon.picture}}">
-            </mat-card-title-group>
-        </mat-card-header>
-        <mat-card-content>
-            <p>Date : {{pokemon.created | date:'d/m/Y'}}</p>
-            <p>HP : {{pokemon.hp}}</p>
-            <p>CP : {{pokemon.cp}}</p>
-        </mat-card-content>
-    </mat-card>
-</div>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>

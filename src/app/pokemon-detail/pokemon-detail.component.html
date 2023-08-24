@@ -1,0 +1,30 @@
+<h1 fxLayoutAlign="center">Détail d'un pokémon</h1>
+
+<div *ngIf="pokemonTarget; else noPokemmonTarget" fxLayout="row wrap" fxLayoutAlign="center">
+    <mat-card fxFlex="50%" class="pokemon-card-details">
+        <mat-card-header>
+            <mat-card-title-group>
+                <mat-card-title>{{pokemonTarget.name | titlecase}}</mat-card-title>
+                <mat-card-subtitle>
+                    <mat-chip-listbox>
+                        <mat-chip *ngFor="let pokeType of pokemonTarget.types" [ngStyle]="{'background-color': pokeType|pokemonTypeColor}">
+                            {{ pokeType | titlecase }}
+                        </mat-chip>
+                    </mat-chip-listbox>
+                </mat-card-subtitle>
+                <img mat-card-xl-image src="{{pokemonTarget.picture}}">
+            </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Date de création : {{pokemonTarget.created | date:'d/MM/Y'}}</p>
+            <p>HP : {{pokemonTarget.hp}}</p>
+            <p>CP : {{pokemonTarget.cp}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="accent" (click)="goToPokemonList()" title="Retourner vers la liste des pokémons.">Retour</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+<ng-template #noPokemmonTarget>
+    <h4>Aucun pokemon n'a été trouvé.</h4>
+</ng-template>
