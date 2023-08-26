@@ -9,6 +9,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {PokemonModule} from "./pokemon/pokemon.module";
+import {FormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -18,12 +21,15 @@ import {PokemonModule} from "./pokemon/pokemon.module";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     FlexLayoutModule,
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
     PokemonModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

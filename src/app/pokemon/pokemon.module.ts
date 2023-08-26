@@ -11,10 +11,18 @@ import {MatCardModule} from "@angular/material/card";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatIconModule} from "@angular/material/icon";
 import {PokemonService} from "./pokemon.service";
+import {FormsModule} from "@angular/forms";
+import { PokemonFormComponent } from './pokemon-form/pokemon-form.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import { PokemonEditComponent } from './pokemon-edit/pokemon-edit.component';
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 const pokemonRoutes: Routes = [
+  { path: 'pokemon/edit/:id', component: PokemonEditComponent},
+  { path: 'pokemon/:id', component: PokemonDetailComponent},
   { path: 'pokemons', component: PokemonListComponent},
-  { path: 'pokemons/:id', component: PokemonDetailComponent},
 ];
 
 @NgModule({
@@ -22,19 +30,26 @@ const pokemonRoutes: Routes = [
     BorderCardDirective,
     PokemonDetailComponent,
     PokemonListComponent,
-    PokemonTypeColorPipe
+    PokemonTypeColorPipe,
+    PokemonFormComponent,
+    PokemonEditComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
     FlexLayoutModule,
     MatButtonModule,
     MatCardModule,
     MatChipsModule,
     MatIconModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatFormFieldModule,
     RouterModule.forChild(pokemonRoutes)
   ],
   providers: [
-      PokemonService
+    PokemonService
   ]
 })
 export class PokemonModule { }

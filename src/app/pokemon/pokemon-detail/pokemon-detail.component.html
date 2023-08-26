@@ -22,6 +22,7 @@
         </mat-card-content>
         <mat-card-actions>
             <button mat-raised-button color="accent" (click)="goToPokemonList()" title="Retourner vers la liste des pokémons.">Retour</button>
+            <button mat-raised-button color="primary" routerLink="/pokemon/edit/{{pokemonTarget.id}}" title="Éditer le pokémon.">Éditer</button>
         </mat-card-actions>
     </mat-card>
 </div>
