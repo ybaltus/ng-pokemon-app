@@ -1,24 +1,45 @@
-<div fxLayout="row">
-    <div class="col s12 m4 offset-m4">
-        <div class="card hoverable">
-            <div class="card-content center">
-                <span class="card-title">Page de connexion</span>
-                <p><em>{{message}}</em></p>
-            </div>
-            <form #loginForm="ngForm">
-                <div>
-                    <label for="name">Name</label>
-                    <input type="text" id="name" [(ngModel)]="name" name="name" required>
-                </div>
-                <div>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" [(ngModel)]="password" name="password" required>
-                </div>
-            </form>
-            <div class="card-action center">
-                <a (click)="login()" class="waves-effect waves-light btn"  *ngIf="!auth.isLoggedIn">Se connecter</a>
-                <a (click)="logout()" *ngIf="auth.isLoggedIn">Se déconnecter</a>
-            </div>
-        </div>
+<div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="50%">
+        <mat-card >
+            <mat-card-header>
+                <mat-card-title>Page de connexion</mat-card-title>
+                <mat-card-subtitle>{{message}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <form #loginForm="ngForm" fxLayout="column">
+                    <mat-form-field>
+                        <mat-label>Nom d'utilisateur</mat-label>
+                        <input
+                                required
+                                matInput
+                                name="username"
+                                maxlength="25"
+                                [(ngModel)]="name"
+                        >
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Mot de passe</mat-label>
+                        <input
+                                required
+                                matInput
+                                name="password"
+                                maxlength="25"
+                                [(ngModel)]="password"
+                        >
+                    </mat-form-field>
+                </form>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button
+                        mat-button
+                        (click)="login()"
+                        *ngIf="!auth.isLoggedIn"
+                >Se connecter</button>
+                <button mat-button
+                        (click)="logout()"
+                        *ngIf="auth.isLoggedIn"
+                >Se déconnecter</button>
+            </mat-card-actions>
+        </mat-card>
     </div>
 </div>

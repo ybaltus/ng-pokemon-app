@@ -17,6 +17,7 @@ import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./in-memory-data.service";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { LoginComponent } from './auth/login/login.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { LoginComponent } from './auth/login/login.component';
     MatToolbarModule,
     MatButtonModule,
     MatInputModule,
+    MatCardModule,
     MatFormFieldModule,
     MatSnackBarModule,
     PokemonModule,
