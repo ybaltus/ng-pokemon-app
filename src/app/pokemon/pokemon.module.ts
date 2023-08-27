@@ -23,12 +23,13 @@ import { PokemonSearchComponent } from './pokemon-search/pokemon-search.componen
 import {MatListModule} from "@angular/material/list";
 import { LoaderComponent } from './loader/loader.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {authGuard} from "../auth/auth.guard";
 
 const pokemonRoutes: Routes = [
-  { path: 'pokemon/edit/:id', component: PokemonEditComponent},
-  { path: 'pokemon/add', component: PokemonAddComponent},
-  { path: 'pokemon/:id', component: PokemonDetailComponent},
-  { path: 'pokemons', component: PokemonListComponent},
+  { path: 'pokemon/edit/:id', canActivate: [authGuard], component: PokemonEditComponent},
+  { path: 'pokemon/add', canActivate: [authGuard], component: PokemonAddComponent},
+  { path: 'pokemon/:id', canActivate: [authGuard], component: PokemonDetailComponent},
+  { path: 'pokemons', canActivate: [authGuard], component: PokemonListComponent},
 ];
 
 @NgModule({
