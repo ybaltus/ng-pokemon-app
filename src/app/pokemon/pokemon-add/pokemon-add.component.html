@@ -1,4 +1,7 @@
-<div fxLayout="column wrap" fxLayoutAlign="center center">
-    <h1>Ajouter un pokemon</h1>
-    <app-pokemon-form [pokemon]="newPokemon"></app-pokemon-form>
+<h1 fxLayoutAlign="center">Ajouter un pokemon</h1>
+
+<div fxLayout="row wrap" fxLayoutAlign="space-around" >
+    <div fxFlex="50%">
+        <app-pokemon-form [pokemon]="newPokemon"></app-pokemon-form>
+    </div>
 </div>

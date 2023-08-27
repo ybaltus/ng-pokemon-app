@@ -1,8 +1,12 @@
-<div fxLayout="column wrap" fxLayoutAlign="center center">
-    <h1>Éditer {{pokemon?.name}}</h1>
-    <p *ngIf="pokemon">
-        <img [src]="pokemon.picture">
-    </p>
-    <app-pokemon-form *ngIf="pokemon" [pokemon]="pokemon"></app-pokemon-form>
+<h1 fxLayoutAlign="center">Éditer {{pokemon?.name}}</h1>
+
+<div fxLayout="row wrap" fxLayoutAlign="space-around">
+    <div fxFlex="50%">
+        <p *ngIf="pokemon">
+            <img [src]="pokemon.picture">
+        </p>
+        <app-pokemon-form *ngIf="pokemon" [pokemon]="pokemon"></app-pokemon-form>
+    </div>
+
 </div>
 
