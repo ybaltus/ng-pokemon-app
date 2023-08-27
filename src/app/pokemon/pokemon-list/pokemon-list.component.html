@@ -7,6 +7,9 @@
 <!--        <p>Aucun pokémon n'a été trouvé (1 à 12).</p>-->
 <!--    </ng-template>-->
 <!--</div>-->
+<section fxLayoutAlign="center">
+    <button mat-raised-button color="primary" routerLink="/pokemon/add" title="Ajouter un pokémon.">Ajouter</button>
+</section>
 
 <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center">
     <mat-card fxFlex="350px" class="pokemon-card" *ngFor="let pokemon of pokemonList" pokemonBorderCard (click)="goToPokemonDetail(pokemon)">

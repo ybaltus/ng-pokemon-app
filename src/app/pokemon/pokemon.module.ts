@@ -18,9 +18,11 @@ import { PokemonEditComponent } from './pokemon-edit/pokemon-edit.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { PokemonAddComponent } from './pokemon-add/pokemon-add.component';
 
 const pokemonRoutes: Routes = [
   { path: 'pokemon/edit/:id', component: PokemonEditComponent},
+  { path: 'pokemon/add', component: PokemonAddComponent},
   { path: 'pokemon/:id', component: PokemonDetailComponent},
   { path: 'pokemons', component: PokemonListComponent},
 ];
@@ -32,7 +34,8 @@ const pokemonRoutes: Routes = [
     PokemonListComponent,
     PokemonTypeColorPipe,
     PokemonFormComponent,
-    PokemonEditComponent
+    PokemonEditComponent,
+    PokemonAddComponent
   ],
   imports: [
     CommonModule,

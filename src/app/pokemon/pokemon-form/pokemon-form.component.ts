@@ -13,6 +13,7 @@ import {Router} from "@angular/router";
 export class PokemonFormComponent implements OnInit {
   @Input() pokemon: Pokemon;
   pokemonTypeList: string[];
+  isAddForm: boolean;
 
   constructor(
       private pokemonService: PokemonService,
@@ -22,6 +23,7 @@ export class PokemonFormComponent implements OnInit {
 
   ngOnInit() {
     this.pokemonTypeList = this.pokemonService.getPokemonTypeList();
+    this.isAddForm = this.router.url.includes('add');
   }
 
   hasType(pokeType: string): boolean {
@@ -51,8 +53,15 @@ export class PokemonFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log("Le formulaire est soumis");
+    if(this.isAddForm){
+      this.pokemonService.addPokemon(this.pokemon)
+          .subscribe((pokemon: Pokemon) => this.router.navigate(['/pokemon', pokemon.id]));
+    } else {
+      this.pokemonService.updatePokemon(this.pokemon)
+          .subscribe(() => this.router.navigate(['/pokemon', this.pokemon.id]));
+    }
 
-    this.router.navigate(['/pokemon', this.pokemon.id])
+    // console.log("Le formulaire est soumis");
+    // this.router.navigate(['/pokemon', this.pokemon.id])
   }
 }

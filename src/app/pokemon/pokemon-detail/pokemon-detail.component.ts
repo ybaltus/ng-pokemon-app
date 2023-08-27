@@ -10,7 +10,6 @@ import {PokemonService} from "../pokemon.service";
   ]
 })
 export class PokemonDetailComponent implements OnInit{
-  pokemonList: Pokemon[];
   pokemonTarget: Pokemon|undefined;
 
   constructor(
@@ -23,12 +22,18 @@ export class PokemonDetailComponent implements OnInit{
   ngOnInit(): void {
     const pokemonId: string|null = this.route.snapshot.paramMap.get('id');
     if(pokemonId) {
-      this.pokemonTarget = this.pokemonService.getPokemonById(+pokemonId);
+      this.pokemonService.getPokemonById(+pokemonId)
+          .subscribe(pokemon => this.pokemonTarget = pokemon);
     }
   }
 
   goToPokemonList() {
     this.router.navigate(['/pokemons']);
+  }
+
+  deletePokemon(pokemon: Pokemon){
+    this.pokemonService.deletePokemonById(pokemon.id)
+        .subscribe(()=> this.router.navigate(['/pokemons']))
   }
 
 }

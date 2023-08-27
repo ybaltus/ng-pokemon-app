@@ -12,6 +12,10 @@ import {PokemonModule} from "./pokemon/pokemon.module";
 import {FormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {HttpClientModule} from "@angular/common/http";
+import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
+import {InMemoryDataService} from "./in-memory-data.service";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -21,6 +25,8 @@ import {MatInputModule} from "@angular/material/input";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}),
     FormsModule,
     FlexLayoutModule,
     MatIconModule,
@@ -28,6 +34,7 @@ import {MatInputModule} from "@angular/material/input";
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
+    MatSnackBarModule,
     PokemonModule,
     AppRoutingModule,
   ],

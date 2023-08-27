@@ -18,6 +18,21 @@
                 <mat-error *ngIf="name.invalid">Le nom du pokémon est requis (1-25).</mat-error>
             </mat-form-field>
 
+            <!-- Pokemon name -->
+            <mat-form-field *ngIf="isAddForm">
+                <mat-label>Image</mat-label>
+                <input
+                        type="url"
+                        required
+                        matInput
+                        name="picture"
+                        #picture="ngModel"
+                        placeholder="Image du pokémon"
+                        [(ngModel)]="pokemon.picture"
+                >
+                <mat-error *ngIf="picture.invalid">L'image du pokémon est requise.</mat-error>
+            </mat-form-field>
+
             <!-- Pokemon hp -->
             <mat-form-field>
                 <mat-label>Point de vie</mat-label>
