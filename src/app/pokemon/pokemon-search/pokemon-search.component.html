@@ -1,0 +1,25 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Rechercher un pokémon</mat-label>
+            <input
+                    matInput
+                    #inputSearch
+                    (keyup)="searchFunction(inputSearch.value)"
+                    placeholder="Entrez votre recherche..."
+            />
+            <mat-icon matPrefix>search</mat-icon>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-list role="list">
+            <mat-list-item
+                    *ngFor="let pokemon of pokemons$ | async"
+                    role="listitem"
+                    (click)="goToDetail(pokemon)"
+            >
+                {{pokemon.name}}
+            </mat-list-item>
+        </mat-list>
+    </div>
+</div>

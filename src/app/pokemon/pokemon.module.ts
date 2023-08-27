@@ -19,6 +19,10 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { PokemonAddComponent } from './pokemon-add/pokemon-add.component';
+import { PokemonSearchComponent } from './pokemon-search/pokemon-search.component';
+import {MatListModule} from "@angular/material/list";
+import { LoaderComponent } from './loader/loader.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 const pokemonRoutes: Routes = [
   { path: 'pokemon/edit/:id', component: PokemonEditComponent},
@@ -35,7 +39,9 @@ const pokemonRoutes: Routes = [
     PokemonTypeColorPipe,
     PokemonFormComponent,
     PokemonEditComponent,
-    PokemonAddComponent
+    PokemonAddComponent,
+    PokemonSearchComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -48,6 +54,8 @@ const pokemonRoutes: Routes = [
     MatInputModule,
     MatCheckboxModule,
     MatSelectModule,
+    MatListModule,
+    MatProgressSpinnerModule,
     MatFormFieldModule,
     RouterModule.forChild(pokemonRoutes)
   ],
